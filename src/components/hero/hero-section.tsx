@@ -57,13 +57,16 @@ export function HeroSection() {
             and premium experiences.
           </motion.p>
 
-          <motion.p
-            className="mt-5 font-mono text-[13px] text-os-secondary"
+          <motion.a
+            className="mt-5 w-fit font-mono text-[13px] text-os-secondary transition-colors hover:text-os-accent focus-visible:shadow-[var(--shadow-focus)] focus-visible:outline-none"
+            href="https://celestiastudios.in"
+            rel="noopener noreferrer"
+            target="_blank"
             transition={transitions.emphasized}
             variants={reveal}
           >
             Co-Founder @ Celestia Studios
-          </motion.p>
+          </motion.a>
 
           <motion.div
             className="mt-7 flex flex-wrap items-center gap-2"
