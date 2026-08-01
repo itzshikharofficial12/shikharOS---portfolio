@@ -891,6 +891,10 @@ select {
   background: transparent;
 }
 
+.project-card__mobile-actions {
+  display: none;
+}
+
 .project-nav-button {
   display: grid;
   width: 2.5rem;
@@ -3343,6 +3347,189 @@ button.toolkit-tool-icon:hover {
   .terminal-input-bar { min-height: 3.35rem; padding: 0.7rem 1rem; font-size: 0.7rem; }
   .terminal-command-center__window > div > footer { display: none; }
   .matrix-rain { display: none; }
+}
+
+/* Mobile projects: a product-page card rather than a compressed desktop carousel. */
+@media (max-width: 767px) {
+  section[aria-label="Desktop workspace"] > section {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  section[aria-label="Desktop workspace"] > section#home {
+    margin-bottom: 5rem;
+  }
+
+  section[aria-label="Desktop workspace"] > section:not(#home) {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+
+  .project-showcase {
+    padding-bottom: 3rem;
+  }
+
+  .project-carousel__indicator {
+    margin-bottom: 2rem;
+  }
+
+  .project-carousel {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    perspective: none;
+  }
+
+  .project-carousel__active {
+    width: 100%;
+  }
+
+  .project-card--previous,
+  .project-card--next {
+    display: none;
+  }
+
+  .project-carousel__active .project-card,
+  .project-card {
+    display: flex;
+    height: auto;
+    min-height: 0;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 1rem;
+  }
+
+  .project-carousel__active .project-card__content,
+  .project-card__content {
+    min-height: 0;
+    padding: 1.25rem;
+  }
+
+  .project-card__content > div:first-child > div:first-child {
+    align-items: flex-start;
+  }
+
+  .project-card__content > div:first-child > p {
+    margin-top: 1.75rem;
+  }
+
+  .project-card__title {
+    font-size: clamp(2rem, 10vw, 2.5rem);
+    line-height: 1;
+  }
+
+  .project-card__statement {
+    max-width: none;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .project-metrics {
+    gap: 0.45rem;
+    margin-top: 1.25rem;
+  }
+
+  .project-metric {
+    min-height: 3.65rem;
+    padding: 0.5rem;
+  }
+
+  .project-card__metadata {
+    margin-top: 1.5rem;
+  }
+
+  .project-card__metadata > .flex {
+    display: -webkit-box;
+    max-height: 4.6rem;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .project-card__desktop-actions {
+    display: none;
+  }
+
+  .project-preview {
+    width: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+    margin: 0 1.25rem;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .project-carousel__active .project-preview {
+    padding: 0;
+  }
+
+  .project-preview__device {
+    min-height: 0;
+    height: 100%;
+    border-width: 0.35rem;
+    border-bottom-width: 0.55rem;
+    border-radius: 1rem;
+  }
+
+  .project-preview__expand,
+  .project-preview__version,
+  .project-preview__built,
+  .project-phone {
+    display: none;
+  }
+
+  .project-card__mobile-actions {
+    display: block;
+    padding: 1.25rem;
+  }
+
+  .project-card__mobile-actions > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .project-card__mobile-actions .project-action {
+    min-height: 2.9rem;
+    justify-content: center;
+    padding-inline: 0.7rem;
+    white-space: nowrap;
+  }
+
+  .project-card__mobile-actions .project-action--quiet {
+    grid-column: 1 / -1;
+  }
+
+  .project-carousel__controls {
+    position: static;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-inline: 0.25rem;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .project-carousel__controls > div {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .project-carousel__controls .project-nav-button {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+@media (max-width: 359px) {
+  .project-card__mobile-actions > div {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card__mobile-actions .project-action--quiet {
+    grid-column: auto;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

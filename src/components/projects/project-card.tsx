@@ -26,9 +26,10 @@ export function ProjectCard({ index, isActive = false, onSelect, position, proje
           <p className="project-card__statement mt-5">{isActive ? (project.id === "orbit-crm" ? "An all-in-one workspace for managing clients, projects and business operations." : project.description) : project.description}</p>
           {isActive ? <div className="project-metrics">{project.metrics.map((metric, metricIndex) => <motion.div key={metric.label} animate={{ opacity: 1, y: 0 }} className="project-metric" initial={{ opacity: 0, y: 8 }} transition={{ delay: 0.12 + metricIndex * 0.06, duration: 0.38, ease: [0.16, 1, 0.3, 1] }}><strong>{metric.value}</strong><span>{metric.label}</span></motion.div>)}</div> : null}
         </div>
-        <div className="mt-auto space-y-5"><ProjectTags tags={project.techStack} /><ProjectButtons project={project} /></div>
+        <div className="project-card__metadata mt-auto space-y-5"><ProjectTags tags={project.techStack} /><div className="project-card__desktop-actions"><ProjectButtons project={project} /></div></div>
       </div>
-      <ProjectPreview isActive project={project} /></> : <div className="project-card__side-content">
+      <ProjectPreview isActive project={project} />
+      <div className="project-card__mobile-actions"><ProjectButtons project={project} /></div></> : <div className="project-card__side-content">
         <div className="flex items-center justify-between gap-2"><span className="font-mono text-[10px] text-os-muted">{String(index + 1).padStart(2, "0")} / 05</span><span className="project-status"><i aria-hidden="true" />{project.status}</span></div>
         <div className="project-card__side-thumbnail" style={{ backgroundImage: `url(${project.image})` }} />
         <p className="mt-5 text-xs text-os-secondary">{project.subtitle}</p>
