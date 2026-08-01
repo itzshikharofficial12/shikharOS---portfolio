@@ -6,6 +6,7 @@ import { transitions } from "@/config/animations";
 import { AvailabilitySection } from "@/components/availability/availability-section";
 import { ContactSection } from "@/components/contact/contact-section";
 import { TopNavigation } from "@/components/desktop/top-navigation";
+import { SystemStatusBar } from "@/components/desktop/system-status-bar";
 import { WorkspaceParticles } from "@/components/desktop/workspace-particles";
 import { HeroSection } from "@/components/hero/hero-section";
 import { DeveloperJourney } from "@/components/journey/developer-journey";
@@ -44,11 +45,12 @@ export function DesktopShell() {
           <section id="availability" aria-label="Availability workspace" className="scroll-mt-24 px-6 py-16 sm:px-9 lg:py-20 lg:px-14">
             <AvailabilitySection />
           </section>
-          <section id="contact" aria-label="Contact workspace" className="scroll-mt-24 px-6 pb-24 pt-16 sm:px-9 lg:pb-32 lg:pt-20 lg:px-14">
+          <section id="contact" aria-label="Contact workspace" className="scroll-mt-24 px-6 pb-40 pt-16 sm:px-9 lg:pb-44 lg:pt-20 lg:px-14">
             <ContactSection />
           </section>
         </section>
       </motion.div>
+      <SystemStatusBar />
     </main>
   );
 }

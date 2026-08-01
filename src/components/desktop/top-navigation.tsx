@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Activity, Menu, Power, X } from "lucide-react";
+import { ArrowUpRight, Menu, Power, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { transitions } from "@/config/animations";
@@ -54,9 +54,9 @@ export function TopNavigation() {
             <Power aria-hidden="true" size={14} strokeWidth={1.75} />
           </motion.div>
           <span className="truncate text-[13px] font-semibold tracking-[0.12em] text-os-text">SHIKHAR OS</span>
-          <span className="hidden items-center gap-2 text-xs text-os-muted sm:flex">
+          <span className="flex items-center gap-2 text-xs text-os-muted">
             <span className="size-2 rounded-full bg-os-accent shadow-[0_0_14px_rgba(74,222,128,0.8)]" />
-            ONLINE
+            <span className="hidden sm:inline">ONLINE</span>
           </span>
         </div>
 
@@ -76,11 +76,20 @@ export function TopNavigation() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2.5 text-right font-mono text-[11px] text-os-muted">
-          <div className="flex items-center gap-2 rounded-os border border-os-border bg-os-surface px-2.5 py-1.5 text-os-text">
-            <Activity aria-hidden="true" size={12} className="text-os-accent" />
-            <span className="hidden sm:inline">Online</span>
-          </div>
+        <div className="flex items-center gap-2">
+          <motion.a
+            className="group inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-os-accent/60 bg-os-surface/45 px-3 py-1.5 text-[12px] font-semibold leading-5 text-white shadow-[0_0_0_rgba(74,222,128,0)] transition-[background-color,border-color,box-shadow] duration-[250ms] hover:border-os-accent hover:bg-[rgba(74,222,128,0.07)] hover:shadow-[0_0_20px_rgba(74,222,128,0.3)] focus-visible:shadow-[var(--shadow-focus)] focus-visible:outline-none"
+            href="https://cal.com/shikhar-srivastava/let-s-build-something"
+            rel="noopener noreferrer"
+            target="_blank"
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            whileHover={{ scale: 1.02, y: -1 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span aria-hidden="true" className="font-mono text-os-accent">&gt;</span>
+            Book a Call
+            <ArrowUpRight aria-hidden="true" className="text-os-accent transition-transform duration-[250ms] group-hover:translate-x-1" size={14} strokeWidth={2} />
+          </motion.a>
           <motion.button
             aria-expanded={isMenuOpen}
             aria-label="Toggle navigation menu"

@@ -2,21 +2,9 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, Layers2 } from "lucide-react";
-import { useState, type PointerEvent as ReactPointerEvent } from "react";
 
-import { HeroPlanet } from "@/components/hero/hero-planet";
+import { LiveStatusMonitor } from "@/components/hero/live-status-monitor";
 import { transitions } from "@/config/animations";
-
-const technologies = [
-  { label: "React", position: "left-1/2 top-0 -translate-x-1/2 -translate-y-1/2" },
-  { label: "Node", position: "right-[7%] top-[10%]" },
-  { label: "Next", position: "right-0 top-1/2 -translate-y-1/2" },
-  { label: "Docker", position: "bottom-[10%] right-[7%]" },
-  { label: "AI", position: "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2" },
-  { label: "Prisma", position: "bottom-[10%] left-[7%]" },
-  { label: "TypeScript", position: "left-0 top-1/2 -translate-y-1/2" },
-  { label: "Python", position: "left-[7%] top-[10%]" },
-] as const;
 
 const reveal = {
   hidden: { opacity: 0, y: 18 },
@@ -24,23 +12,13 @@ const reveal = {
 };
 
 export function HeroSection() {
-  const [orbitOffset, setOrbitOffset] = useState({ x: 0, y: 0 });
-
-  function handlePointerMove(event: ReactPointerEvent<HTMLDivElement>) {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-
-    setOrbitOffset({ x: x * 18, y: y * 18 });
-  }
-
   return (
     <section
       id="universe"
       aria-labelledby="hero-heading"
-      className="relative flex min-h-[calc(84dvh-64px)] items-center overflow-hidden px-6 pb-28 pt-10 sm:px-9 lg:px-14 lg:pb-24"
+      className="relative flex h-[calc(100dvh-4rem)] min-h-[calc(100dvh-4rem)] items-center overflow-hidden px-6 pb-28 pt-10 sm:px-9 lg:px-14 lg:pb-24"
     >
-      <div className="relative z-10 mx-auto grid w-full max-w-[1280px] items-center gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(360px,0.88fr)] lg:gap-6">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1280px] items-center gap-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(360px,0.88fr)] lg:gap-6">
         <motion.div
           animate="visible"
           className="max-w-[580px]"
@@ -109,40 +87,7 @@ export function HeroSection() {
           </motion.div>
         </motion.div>
 
-        <div
-          className="relative mx-auto aspect-square w-full max-w-[470px]"
-          onPointerLeave={() => setOrbitOffset({ x: 0, y: 0 })}
-          onPointerMove={handlePointerMove}
-        >
-          <motion.div
-            animate={orbitOffset}
-            className="absolute inset-[14%] rounded-full border border-os-border"
-            transition={{ ...transitions.standard, duration: 0.34 }}
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              className="absolute inset-0"
-              transition={{ duration: 36, ease: "linear", repeat: Infinity }}
-            >
-              {technologies.map(({ label, position }) => (
-                <motion.div
-                  key={label}
-                  animate={{ rotate: -360 }}
-                  className={`absolute ${position}`}
-                  transition={{ duration: 36, ease: "linear", repeat: Infinity }}
-                >
-                  <span className="inline-flex whitespace-nowrap rounded-os border border-os-border bg-os-background/72 px-3 py-1.5 font-mono text-[11px] text-os-muted shadow-[var(--shadow-soft)] backdrop-blur-[var(--blur-glass)]">
-                    {label}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-          <div aria-hidden="true" className="absolute inset-[25%] rounded-full border border-os-border/60" />
-          <div className="absolute inset-[30%]">
-            <HeroPlanet />
-          </div>
-        </div>
+        <LiveStatusMonitor />
       </div>
     </section>
   );
