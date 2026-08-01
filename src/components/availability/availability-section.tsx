@@ -61,8 +61,8 @@ export function AvailabilitySection() {
         >
           <header className="availability-console__top">
             <span>
-              <TerminalSquare aria-hidden="true" size={14} /> SHIKHAR OS{" "}
-              <i>/</i> availability
+              <TerminalSquare aria-hidden="true" size={14} /> <b>SHIKHAR OS</b>
+              <span className="availability-console__path"><i>/</i> availability</span>
             </span>
             <span className="availability-console__live">
               <b /> available_for_opportunities

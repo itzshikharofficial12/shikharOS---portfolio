@@ -38,13 +38,12 @@ type JourneyCommitCardProps = { commit: (typeof journeyCommits)[number]; index: 
 
 function JourneyCommitCard({ commit, index }: JourneyCommitCardProps) {
   const isHead = commit.status === "HEAD";
-  const direction = index % 2 === 0 ? -1 : 1;
 
   return (
     <motion.article
-      animate={{ filter: "blur(0px)", opacity: 1, x: 0, y: 0 }}
+      animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
       className={cn("journey-commit", index % 2 === 0 ? "journey-commit--left" : "journey-commit--right", isHead && "journey-commit--head")}
-      initial={{ filter: "blur(8px)", opacity: 0, x: direction * 28, y: 18 }}
+      initial={{ filter: "blur(5px)", opacity: 0, y: 18 }}
       transition={{ ...transitions.emphasized, delay: Math.min(index * 0.08, 0.32) }}
       whileHover={{ y: -5 }}
     >
@@ -55,10 +54,10 @@ function JourneyCommitCard({ commit, index }: JourneyCommitCardProps) {
           <span className="flex items-center gap-2 text-os-muted"><GitCommitHorizontal aria-hidden="true" size={14} />{isHead ? "HEAD →" : `commit ${String(index + 1).padStart(2, "0")}`}</span>
           <span className="journey-commit__year">{commit.year}</span>
         </div>
-        <p className="mt-7 font-mono text-xs text-os-secondary">{commit.hash}</p>
+        <p className="journey-commit__hash mt-7 font-mono text-xs text-os-secondary">{commit.hash}</p>
         <h3 className="mt-2 text-2xl font-semibold leading-tight text-os-text">{commit.message}</h3>
-        <p className="mt-3 max-w-md text-sm leading-7 text-os-muted">{commit.summary}</p>
-        <div className="mt-6 flex flex-wrap gap-2">{commit.tech.map((item) => <span key={item} className="journey-commit__tech">{item}</span>)}</div>
+        <p className="journey-commit__summary mt-3 max-w-md text-sm leading-7 text-os-muted">{commit.summary}</p>
+        <div className="journey-commit__tech-list mt-6 flex flex-wrap gap-2">{commit.tech.map((item) => <span key={item} className="journey-commit__tech">{item}</span>)}</div>
       </div>
     </motion.article>
   );

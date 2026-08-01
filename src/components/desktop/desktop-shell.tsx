@@ -17,7 +17,7 @@ import { TerminalWindow } from "@/components/terminal/terminal-window";
 export function DesktopShell() {
   return (
     <main className="relative isolate flex min-h-dvh overflow-x-hidden bg-os-background">
-      <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      <div aria-hidden="true" className="workspace-grid absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:64px_64px]" />
       <WorkspaceParticles />
       <motion.div
         animate={{ filter: "blur(0px)", opacity: 1, scale: 1 }}
@@ -29,6 +29,7 @@ export function DesktopShell() {
         <section aria-label="Desktop workspace" className="relative flex-1">
           <section id="home" aria-label="Introduction workspace" className="scroll-mt-24">
             <HeroSection />
+            <div className="mobile-system-status"><SystemStatusBar embedded /></div>
           </section>
           <section id="projects" aria-label="Projects workspace" className="scroll-mt-24 px-6 py-16 sm:px-9 lg:py-20 lg:px-14">
             <ProjectWorkspace />
@@ -50,7 +51,7 @@ export function DesktopShell() {
           </section>
         </section>
       </motion.div>
-      <SystemStatusBar />
+      <SystemStatusBar className="desktop-system-status" />
     </main>
   );
 }

@@ -38,7 +38,7 @@ export function WorkspaceParticles() {
   }, [cursorX, cursorY]);
 
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div aria-hidden="true" className="workspace-particles pointer-events-none absolute inset-0 overflow-hidden">
       {particlePositions.map((position, index) => <WorkspaceParticle key={position} index={index} position={position} x={cursorX} y={cursorY} />)}
     </div>
   );

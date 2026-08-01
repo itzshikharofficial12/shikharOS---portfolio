@@ -392,19 +392,19 @@ export function TerminalWindow({ className }: TerminalWindowProps) {
             initial={{ height: 0, opacity: 0 }}
             transition={transitions.standard}
           >
-            <div className="relative flex h-[468px] flex-col font-mono text-[13px] sm:h-[530px] lg:h-[576px]" onWheel={handleTerminalWheel}>
+            <div className="terminal-mobile-shell relative flex h-[468px] flex-col font-mono text-[13px] sm:h-[530px] lg:h-[576px]" onWheel={handleTerminalWheel}>
               <div ref={historyScrollRef} className="terminal-history relative min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-5">
                 <AnimatePresence>{isMatrixActive ? <MatrixRain /> : null}</AnimatePresence>
                 <div className="relative z-10">
                 <div className="terminal-welcome mb-6 border border-os-accent/20 bg-os-accent/[0.035] px-4 py-4">
                   <p className="text-base font-medium text-os-text">Welcome to <span className="text-os-accent">SHIKHAR OS</span></p>
                   <p className="mt-1 text-os-muted">Version 4.0 <span className="mx-2 text-os-border-strong">/</span> Type <span className="text-os-accent">help</span> to see available commands.</p>
-                  <div className="mt-4 flex flex-wrap gap-2">{["help", "whoami", "projects", "coffee"].map((command) => <button key={command} className="terminal-command-chip" onClick={() => submitCommand(command)} type="button">{command}</button>)}</div>
+                  <div className="mt-4 flex flex-wrap gap-2">{["help", "whoami", "projects", "coffee", "clear"].map((command) => <button key={command} className="terminal-command-chip" onClick={() => submitCommand(command)} type="button">{command}</button>)}</div>
                 </div>
                 <div className="space-y-5">{entries.map((entry) => <TerminalOutput key={entry.id} entry={entry} />)}</div>
                 </div>
               </div>
-              <div className="relative z-10 flex min-w-0 items-center gap-2 border-t border-os-border px-4 py-4 sm:px-5" onClick={focusInput}>
+              <div className="terminal-input-bar relative z-10 flex min-w-0 items-center gap-2 border-t border-os-border px-4 py-4 sm:px-5" onClick={focusInput}>
                 <span className="shrink-0 text-os-accent">visitor@shikhar-os</span><span className="shrink-0 text-os-muted">:~$</span>
                 <input ref={inputRef} aria-label="Terminal command" autoCapitalize="none" autoComplete="off" autoCorrect="off" className="min-w-0 flex-1 bg-transparent text-os-text caret-os-accent outline-none disabled:cursor-not-allowed" disabled={isSessionClosed || recruitmentState === "running"} onChange={(event) => { setInput(event.target.value); setHistoryIndex(null); }} onKeyDown={handleKeyDown} placeholder={isSessionClosed ? "Connection closed. Use the red control to reconnect." : recruitmentState === "running" ? "Recruitment protocol initializing..." : recruitmentState === "awaiting-option" ? "Select an option [1-6]..." : "Type a command..."} spellCheck={false} value={input} />
                 {!isSessionClosed ? <span aria-hidden="true" className="terminal-caret h-4 w-1.5 shrink-0 bg-os-accent" /> : null}

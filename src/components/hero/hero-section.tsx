@@ -16,12 +16,12 @@ export function HeroSection() {
     <section
       id="universe"
       aria-labelledby="hero-heading"
-      className="relative flex h-[calc(100dvh-4rem)] min-h-[calc(100dvh-4rem)] items-center overflow-hidden px-6 pb-28 pt-10 sm:px-9 lg:px-14 lg:pb-24"
+      className="relative flex h-auto min-h-0 items-start overflow-visible px-4 py-8 sm:px-9 md:h-[calc(100dvh-4rem)] md:min-h-[calc(100dvh-4rem)] md:items-center md:overflow-hidden md:px-6 md:pb-28 md:pt-10 lg:px-14 lg:pb-24"
     >
-      <div className="relative z-10 mx-auto grid w-full max-w-[1280px] items-center gap-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(360px,0.88fr)] lg:gap-6">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1280px] items-center gap-5 text-center md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-5 md:text-left lg:grid-cols-[minmax(0,0.92fr)_minmax(360px,0.88fr)] lg:gap-6">
         <motion.div
           animate="visible"
-          className="max-w-[580px]"
+          className="mx-auto w-full max-w-[580px] md:mx-0"
           initial="hidden"
           transition={{ delayChildren: 0.1, staggerChildren: 0.1 }}
           variants={{ visible: { transition: { delayChildren: 0.1, staggerChildren: 0.1 } } }}
@@ -46,7 +46,7 @@ export function HeroSection() {
           </motion.h1>
 
           <motion.p
-            className="mt-6 max-w-[430px] text-base leading-7 text-os-muted"
+            className="mx-auto mt-5 max-w-[430px] text-[15px] leading-6 text-os-muted md:mx-0 md:mt-6 md:text-base md:leading-7"
             transition={transitions.emphasized}
             variants={reveal}
           >
@@ -58,7 +58,7 @@ export function HeroSection() {
           </motion.p>
 
           <motion.a
-            className="mt-5 w-fit font-mono text-[13px] text-os-secondary transition-colors hover:text-os-accent focus-visible:shadow-[var(--shadow-focus)] focus-visible:outline-none"
+            className="mx-auto mt-4 w-fit font-mono text-[13px] text-os-secondary transition-colors hover:text-os-accent focus-visible:shadow-[var(--shadow-focus)] focus-visible:outline-none md:mx-0 md:mt-5"
             href="https://celestiastudios.in"
             rel="noopener noreferrer"
             target="_blank"
@@ -69,17 +69,17 @@ export function HeroSection() {
           </motion.a>
 
           <motion.div
-            className="mt-7 flex flex-wrap items-center gap-2"
+            className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center md:mt-7 md:justify-start"
             transition={transitions.emphasized}
             variants={reveal}
           >
-            <motion.a href="#universe" className="command-button" transition={transitions.interaction} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <motion.a href="#terminal" className="command-button min-h-11 justify-center" transition={transitions.interaction} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               Explore Universe
               <ArrowUpRight aria-hidden="true" size={16} strokeWidth={1.75} />
             </motion.a>
             <motion.a
               href="#projects"
-              className="sidebar-button border border-os-border bg-os-surface px-3 py-1.5 text-sm text-os-text"
+              className="sidebar-button min-h-11 justify-center border border-os-border bg-os-surface px-3 py-1.5 text-sm text-os-text"
               transition={transitions.interaction}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}

@@ -272,16 +272,21 @@ function useCurrentDate() {
   };
 }
 
-export function SystemStatusBar() {
+type SystemStatusBarProps = {
+  className?: string;
+  embedded?: boolean;
+};
+
+export function SystemStatusBar({ className = "", embedded = false }: SystemStatusBarProps) {
   const { date, weekday } = useCurrentDate();
   const router = useRouter();
 
   return (
     <motion.aside
-      animate={{ opacity: 1, x: "-50%", y: 0 }}
+      animate={{ opacity: 1, x: embedded ? 0 : "-50%", y: 0 }}
       aria-label="SHIKHAR OS system status"
-      className="system-status-bar"
-      initial={{ opacity: 0, x: "-50%", y: 28 }}
+      className={`system-status-bar ${className}`}
+      initial={{ opacity: 0, x: embedded ? 0 : "-50%", y: 28 }}
       transition={{ ...transitions.emphasized, duration: 0.5 }}
     >
       <div className="system-status-bar__scroll-area">

@@ -60,11 +60,13 @@ function ToolDetail({ onClose, tool }: ToolDetailProps) {
 type ToolkitCardProps = { category: ToolkitCategory; onSelect: (tool: ToolkitTool) => void };
 
 function ToolkitCard({ category, onSelect }: ToolkitCardProps) {
+  const remainingTools = category.tools.length - 4;
+
   return (
     <motion.article animate={{ filter: "blur(0px)", opacity: 1, y: 0 }} className="toolkit-card" initial={{ filter: "blur(6px)", opacity: 0, y: 16 }} transition={transitions.emphasized} whileHover={{ y: -4 }}>
       <div className="flex items-start justify-between gap-5"><div className="flex items-center gap-3"><span className="toolkit-category-icon"><ToolkitIcon name={category.icon} /></span><h3 className="text-lg font-semibold text-os-text">{category.title}</h3></div><span className="toolkit-count">{category.tools.length} tools</span></div>
       <p className="mt-5 max-w-sm text-[13px] leading-6 text-os-muted">{category.description}</p>
-      <div className="mt-auto flex items-end justify-between gap-3"><div className="flex flex-wrap gap-2">{category.tools.map((tool) => <button key={tool.name} aria-label={`Inspect ${tool.name}`} className="toolkit-tool-icon" onClick={() => onSelect(tool)} title={`${tool.name} · ${tool.years} · ${tool.projects}`} type="button"><ToolkitIcon name={tool.icon} /></button>)}</div><button aria-label={`View all ${category.title} tools`} className="toolkit-view-all" onClick={() => onSelect(category.tools[0])} type="button">View All <ArrowRight aria-hidden="true" size={15} /></button></div>
+      <div className="mt-auto flex items-end justify-between gap-3"><div className="toolkit-tool-list flex flex-wrap gap-2">{category.tools.map((tool) => <button key={tool.name} aria-label={`Inspect ${tool.name}`} className="toolkit-tool-icon" onClick={() => onSelect(tool)} title={`${tool.name} · ${tool.years} · ${tool.projects}`} type="button"><ToolkitIcon name={tool.icon} /></button>)}{remainingTools > 0 ? <span className="toolkit-tool-more">+{remainingTools}</span> : null}</div><button aria-label={`View all ${category.title} tools`} className="toolkit-view-all" onClick={() => onSelect(category.tools[0])} type="button">View All <ArrowRight aria-hidden="true" size={15} /></button></div>
     </motion.article>
   );
 }
