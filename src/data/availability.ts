@@ -13,7 +13,7 @@ export const availabilityContent = {
     {
       action: "Start a Project",
       description: "Available for SaaS platforms, premium websites, dashboards, AI automations and custom software solutions.",
-      href: "#contact",
+      href: "https://cal.com/shikhar-srivastava/let-s-build-something",
       icon: "LaptopMinimal",
       status: "AVAILABLE",
       title: "Freelance Projects",

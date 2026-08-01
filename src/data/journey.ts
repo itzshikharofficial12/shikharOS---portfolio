@@ -15,7 +15,7 @@ export const journeyCommits: readonly JourneyCommit[] = [
     message: "Started Programming",
     summary: "Learned HTML, CSS and JavaScript, then began turning small ideas into working interfaces.",
     tech: ["HTML", "CSS", "JavaScript"],
-    year: "2024",
+    year: "2022",
   },
   {
     hash: "9a0c8e1",
@@ -39,7 +39,7 @@ export const journeyCommits: readonly JourneyCommit[] = [
     message: "Started Celestia Studios",
     summary: "Began building brand systems and software that help ambitious businesses move with more clarity.",
     tech: ["Brand", "Next.js", "Systems"],
-    year: "2025",
+    year: "2026",
   },
   {
     hash: "HEAD",
