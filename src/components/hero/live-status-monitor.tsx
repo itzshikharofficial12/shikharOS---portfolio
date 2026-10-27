@@ -77,7 +77,7 @@ export function LiveStatusMonitor() {
         <time dateTime={dateTime}>{time}</time>
       </header>
       <div className="live-status-monitor__body">
-        <MonitorRow icon={<Rocket size={15} />} label="CURRENT MISSION" status="ACTIVE">Building Orbit CRM</MonitorRow>
+        <MonitorRow icon={<Rocket size={15} />} label="CURRENT MISSION" status="ACTIVE">Building Streamline</MonitorRow>
         <MonitorRow icon={<BrainCircuit size={15} />} label="CURRENT FOCUS" status="LEARNING">System Design</MonitorRow>
         <MonitorRow icon={<Boxes size={15} />} label="CURRENT STACK">
           <span className="live-status-monitor__pills">{stack.map((item) => <b key={item}>{item}</b>)}</span>
